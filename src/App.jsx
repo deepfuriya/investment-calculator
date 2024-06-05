@@ -1,7 +1,19 @@
-function App() {
-  return (
-    <h1>React Investment Calculator</h1>
-  )
-}
+import { useState } from "react";
 
-export default App
+import InputTab from "./components/InputTab";
+import ResultTab from "./components/ResultTab";
+import Header from "./components/Header";
+
+export default function App() {
+  const [values, setValues] = useState();
+
+  return (
+    <div>
+      <Header/>
+
+      <InputTab />
+
+      <ResultTab />
+    </div>
+  );
+}
