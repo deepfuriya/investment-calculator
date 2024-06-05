@@ -1,22 +1,4 @@
-import { useState } from "react";
-
-export default function InputTab() {
-  const [userInput, updateUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 5,
-    duration: 2,
-  });
-
-  function handleInputChange(valueType, value) {
-    updateUserInput((prevVal) => {
-      return {
-        ...prevVal,
-        [valueType]: value,
-      };
-    });
-  }
-
+export default function InputTab({ onInputChange, userInput }) {
   return (
     <div id="user-input" className="input-group">
       <div>
@@ -25,7 +7,7 @@ export default function InputTab() {
           type="number"
           value={userInput.initialInvestment}
           onChange={(e) =>
-            handleInputChange("initialInvestment", e.target.value)
+            onInputChange("initialInvestment", e.target.value)
           }
         ></input>
       </div>
@@ -35,7 +17,7 @@ export default function InputTab() {
           type="number"
           value={userInput.annualInvestment}
           onChange={(e) =>
-            handleInputChange("annualInvestment", e.target.value)
+            onInputChange("annualInvestment", e.target.value)
           }
         ></input>
       </div>
@@ -44,7 +26,7 @@ export default function InputTab() {
         <input
           type="number"
           value={userInput.expectedReturn}
-          onChange={(e) => handleInputChange("expectedReturn", e.target.value)}
+          onChange={(e) => onInputChange("expectedReturn", e.target.value)}
         ></input>
       </div>
       <div>
@@ -52,7 +34,7 @@ export default function InputTab() {
         <input
           type="number"
           value={userInput.duration}
-          onChange={(e) => handleInputChange("duration", e.target.value)}
+          onChange={(e) => onInputChange("duration", e.target.value)}
         ></input>
       </div>
     </div>

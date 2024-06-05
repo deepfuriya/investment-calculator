@@ -5,15 +5,29 @@ import ResultTab from "./components/ResultTab";
 import Header from "./components/Header";
 
 export default function App() {
-  const [values, setValues] = useState();
+  const [userInput, updateUserInput] = useState({
+    initialInvestment: 15000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10,
+  });
+
+  function handleInputChange(valueType, value) {
+    updateUserInput((prevVal) => {
+      return {
+        ...prevVal,
+        [valueType]: +value,
+      };
+    });
+  }
 
   return (
     <div>
-      <Header/>
+      <Header />
 
-      <InputTab />
+      <InputTab onInputChange={handleInputChange} userInput={userInput} />
 
-      <ResultTab />
+      <ResultTab userInput={userInput} />
     </div>
   );
 }
